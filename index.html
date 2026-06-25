@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Night Ops Guide</title>
+<style>
+  :root{
+    --bg:#0f1216; --panel:#171c22; --panel2:#1e252d; --line:#2b333d;
+    --txt:#e6edf3; --dim:#9aa7b4; --accent:#4ea1ff; --green:#36d399;
+    --amber:#fbbf24; --red:#f87171; --purp:#a78bfa;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font:16px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    -webkit-text-size-adjust:100%}
+  .wrap{max-width:900px;margin:0 auto;padding:18px 16px 80px}
+  h1{font-size:25px;margin:6px 0 2px}
+  h2{font-size:20px;margin:30px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+  h3{font-size:17px;margin:18px 0 8px}
+  .sub{color:var(--dim);font-size:14px;margin-bottom:14px}
+  .golden{background:linear-gradient(135deg,#1d2a1f,#16201a);border:1px solid #2f5138;
+    border-radius:12px;padding:14px 16px;margin:14px 0}
+  .golden b{color:var(--green)}
+  .reflex{background:linear-gradient(135deg,#2a1f10,#231a10);border:1px solid #5a4716;
+    border-radius:12px;padding:14px 16px;margin:14px 0}
+  .reflex b{color:var(--amber)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;margin:12px 0}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:680px){.twocol{grid-template-columns:1fr}}
+  .you{border-top:4px solid var(--green)}
+  .me{border-top:4px solid var(--amber)}
+  .you h3{color:var(--green)} .me h3{color:var(--amber)}
+  ul{margin:6px 0 6px;padding-left:20px} li{margin:4px 0}
+  ol{margin:6px 0;padding-left:22px}
+  .q{cursor:pointer;background:var(--panel);border:1px solid var(--line);
+    border-radius:10px;padding:12px 14px;margin:8px 0;font-weight:600;position:relative}
+  .q::before{content:"▸ ";color:var(--accent)}
+  .q.open::before{content:"▾ "}
+  .freq{position:absolute;right:12px;top:12px;font-size:11px;color:var(--dim);font-weight:600}
+  .a{display:none;background:var(--panel2);border:1px solid var(--line);border-top:none;
+    border-radius:0 0 10px 10px;margin:-8px 0 10px;padding:12px 14px}
+  .a.show{display:block}
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:20px;margin-right:6px}
+  .pill.do{background:#16351f;color:var(--green);border:1px solid #2f5138}
+  .pill.ask{background:#3a2e10;color:var(--amber);border:1px solid #5a4716}
+  .tree{margin:10px 0}
+  .node{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:6px 0}
+  .node.start{border-left:4px solid var(--accent)}
+  .branch{margin-left:18px;border-left:2px dashed var(--line);padding-left:14px}
+  .y{color:var(--green);font-weight:700} .n{color:var(--red);font-weight:700}
+  .out{background:#16351f;border:1px solid #2f5138;border-radius:8px;padding:8px 10px;margin:6px 0}
+  .out.stop{background:#3a1a1a;border-color:#5a2a2a}
+  .out.ask{background:#3a2e10;border-color:#5a4716}
+  table{width:100%;border-collapse:collapse;margin:8px 0;font-size:14.5px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--accent);font-size:13px;text-transform:uppercase;letter-spacing:.3px}
+  code{background:#0b0e11;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:13.5px}
+  .num{font-variant-numeric:tabular-nums}
+  a{color:var(--accent)}
+  .toc a{display:inline-block;margin:4px 10px 4px 0;color:var(--accent);text-decoration:none;font-size:14px}
+  .foot{color:var(--dim);font-size:13px;margin-top:30px;border-top:1px solid var(--line);padding-top:12px}
+  .tag{font-size:12px;color:var(--dim)}
+  .fill{background:#231a2e;border:1px dashed #5a4694;border-radius:8px;padding:6px 10px;color:#cbb6f0;font-size:13.5px;margin:6px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>🌙 BASE Carriers — Night Ops Guide</h1>
+<div class="sub">For Brendan · built from our full thread (27,500+ messages, Feb 2023→now) and how Amedeo actually answers · ordered by what you ask most</div>
+
+<div class="golden">
+<b>THE GOLDEN RULE</b> — Try to solve it <b>every way you know first</b>. Only text Amedeo when the answer is genuinely <i>his call</i> (the amber list below). When you do: <b>answer-first, one line.</b>
+</div>
+
+<div class="reflex">
+<b>⚠️ THE #1 THING — kill the "is that fine?" reflex.</b> Looking back at everything, <b>6 of every 10 questions you ask are confirmation</b> — <i>"is that fine? · right? · or no? · what should we do here? · should I tell him?"</i> Almost every time, the answer is <b>yes, do it.</b> New rule: <b>if you're about to ask "is that fine?" — it's fine. Do it, then tell me what you did in one line.</b> Send me a <i>decision</i>, not a <i>question</i>: "Edwin's covering the Calverton, posted the Westbury at $500" beats "should I have Edwin do Calverton and post Westbury?"
+</div>
+
+<div class="card toc">
+<b>Jump to:</b>
+<a href="#boundary">✅ You decide vs 🟡 Ask</a>
+<a href="#fast">⚡ Fast Answers</a>
+<a href="#comms">📇 Who to Contact</a>
+<a href="#trees">🌳 Decision Trees</a>
+<a href="#carriers">🚚 Carrier Bench</a>
+<a href="#rates">💵 Rates</a>
+<a href="#maint">🔧 Maintenance</a>
+<a href="#ref">📋 Reference</a>
+</div>
+
+<!-- ===================== BOUNDARY ===================== -->
+<h2 id="boundary">The Boundary — handle it yourself vs text Amedeo</h2>
+<div class="twocol">
+  <div class="card you">
+    <h3>✅ YOU decide (don't text me)</h3>
+    <ul>
+      <li><b>Telling a carrier the rate</b> — it's in the table, just read it to them</li>
+      <li>Driver ETAs / tracking chase — call the driver</li>
+      <li>Relaying a routine ETA to a flexible customer (Newburgh, etc.)</li>
+      <li>Assigning a <b>known</b> driver to a <b>standard lane at the standard rate</b></li>
+      <li>Posting an open load on DAT (price high)</li>
+      <li><b>Routing a contact</b> — email vs text vs group chat (see matrix)</li>
+      <li>Tire repairs (route by equipment owner)</li>
+      <li>Temp checks/adjustments vs the BOL setpoint (incl. 1° mismatches)</li>
+      <li>Trailer swaps; sending the <b>Excel BOL</b> (never the delivery order)</li>
+      <li>Finding a "lost" trailer (look up the container #)</li>
+      <li>Yard parking / drops / fuel-list prep · Masport + Rose Rocket updates</li>
+      <li>Pickup # not working → run the tree before me</li>
+    </ul>
+  </div>
+  <div class="card me">
+    <h3>🟡 ASK Amedeo (these are mine)</h3>
+    <ul>
+      <li>Paying <b>above the recovery max</b>, or booking at a <b>loss</b></li>
+      <li>Booking a <b>brand-new / unknown carrier</b></li>
+      <li>Any <b>TONU</b> — never offered without my OK</li>
+      <li>Any <b>fuel advance</b> (those go through Bailey)</li>
+      <li>Whether to <b>deliver a non-running</b> trailer</li>
+      <li><b>Customer-facing</b> messaging about a <b>delay/problem</b> (esp. John @ Glow) — what we tell a customer is my call</li>
+      <li><b>Fines & payment disputes</b> (incl. holding a driver's pay)</li>
+      <li>Which loads to <b>prioritize</b> when we can't cover them all</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== FAST ANSWERS ===================== -->
+<h2 id="fast">⚡ Fast Answers — ordered by how often you ask</h2>
+<p class="sub">Tap a question. The number is roughly how many times it's come up.</p>
+
+<div class="q">Should I email them, text them, or hit the group chat?<span class="freq">~295×</span></div>
+<div class="a">
+See the <a href="#comms">Who-to-Contact matrix</a> below. Defaults: <b>delays/problems → EMAIL</b> the customer (Glow, Dole, Chiquita, Top Banana) so there's a record they can't deny. Routine driver coordination → text/group chat is fine. <b>Don't call John @ Glow unprepared</b> — loop me first. You almost never need to ask me <i>which channel</i> — pick email if it's a problem, text if it's routine.
+</div>
+
+<div class="q">Who's covering [lane]? / Should I post it? / Anyone near there?<span class="freq">~267×</span></div>
+<div class="a">
+If it's unassigned + standard → assign a known driver yourself (see <a href="#carriers">Carrier Bench</a>). <b>Should I post it? → YES, post it high, don't ask.</b> Nobody confirmed by <b>8pm</b> → run the <a href="#tree-cover">Coverage tree</a> (blast everyone, DAT, double-book). Only text me if it hits the amber list (loss / above max / unknown carrier / priority call).
+</div>
+
+<div class="q">A driver / trailer is "missing" at the yard — what do I do?<span class="freq">~196×</span></div>
+<div class="a">
+<span class="pill do">YOU HANDLE</span> Don't ask me — <b>find it:</b> 1) Look up the <b>container # in Masport</b> to see its real status/location. 2) Check the other spots — <b>OEX, Leonard's, Garasches</b>, the back area of the yard. 3) A port puller may have dropped it somewhere else — check who pulled it. 4) Have the driver <b>photograph what's actually there</b> and read you numbers. Tell drivers which yard has space for drops. <span class="tag">Active yards: 56/76 J Caldwell (main), Garasches (overflow/Everett), OEX/Leonard's (port).</span>
+</div>
+
+<div class="q">What's the rate? — a carrier's asking me what we pay.<span class="freq">~111×</span></div>
+<div class="a">
+<span class="pill do">YOU HANDLE</span> <b>It's in the <a href="#rates">rate table</a> — just tell them.</b> You don't need me to relay a standard rate. Everett: $1,400 Ortega / $1,300 others / Brisk Hawk $1,550. Calverton+Westbury $1,150. Newburgh $800–1,000. Posting a spot? Price HIGH to guarantee coverage. Only ask me if they want <b>above the recovery max</b> or you'd be <b>booking at a loss</b>.
+</div>
+
+<div class="q">Is this load coming out of the port — today or tomorrow?<span class="freq">port</span></div>
+<div class="a">
+Check the <b>pickup date</b> on the port list / Masport — <b>don't send a driver before the pickup date.</b> If it says picked up tomorrow, it goes tomorrow (unless I've said pull early). Storm/port-delay days: not everything comes out, and the customers know it. Pickup # not working → <a href="#tree-pickup">run the tree</a>.
+</div>
+
+<div class="q">Driver gave me an ETA — do I pass it to the customer?<span class="freq">~75×</span></div>
+<div class="a">
+Routine ETA to a <b>flexible customer</b> (Newburgh, etc.) → yes, relay it, you don't need me. But if the ETA means a <b>delay or a missed window</b> (esp. Glow/Everett, Top Banana) → that becomes a <b>customer-delay message = mine</b>, and it goes in <b>email</b>. Driver stopped on tracking → call him now, don't wait.
+</div>
+
+<div class="q">Is the Excel sheet the BOL? Do I send the delivery order too?<span class="freq">~51×</span></div>
+<div class="a">
+<span class="pill do">YOU HANDLE</span> The <b>Excel sheet IS the BOL.</b> Drivers get <b>only</b> that. <b>Never send the delivery order</b> — "it's worthless at delivery." IFFC/Everett drivers must have the Excel BOL in hand. Need a customer PO that's not on it → it's usually on the Excel sheet (Glow PO starts 818-ish); if missing, ask the customer.
+</div>
+
+<div class="q">A trailer won't start / genset / battery / keeps shutting off.<span class="freq">~91×</span></div>
+<div class="a">
+<span class="pill do">MOSTLY YOU</span> Run the <a href="#tree-mech">Mechanical tree</a>. Whose equipment? Chiquita → TTS/Goodyear (they pay direct). Dole → <b>email for a work-order # FIRST</b>. Leased → JD/Yeisi. <b>Glad hands at Everett</b> → ask John @ Glow. <b>Port delivered it damaged</b> → document + bill back to the port carrier. Only the <b>non-running delivery</b> decision is mine.
+</div>
+
+<div class="q">An empty / wrong trailer came back — is it ours? Do we pay him?<span class="freq">~26×</span></div>
+<div class="a">
+<b>Never bring back an empty that isn't ours</b> (no exceptions). Cross-check the # vs the Masport empty list + the customer's empty-list email. Dole↔Chiquita can't interchange. Wrong trailer brought back → <b>payment is held / fine applies</b> — but <b>holding a driver's pay is my call</b>, so flag that one. "Can the return trailer be a load-out?" — only if it's the right type & ours.
+</div>
+
+<div class="q">Temp on the BOL doesn't match the trailer — fine?<span class="freq">~18×</span></div>
+<div class="a">
+<span class="pill do">YOU HANDLE</span> <b>Match the BOL setpoint.</b> A 1° gap (57 vs 58) is fine. Bananas 57–58°F, pineapple/lime 45°F (7.2°C), mixed-with-banana usually banana temp (Newburgh = 52°F overnight). <b>Glow/Everett: don't preset</b> — match the Gate Pass, flag a mismatch. Keep a non-running trailer at temp by plugging into an adjacent genset. <b>Deliver-not-running = my call.</b>
+</div>
+
+<div class="q">Which trailers do I fuel / mark "do not fill"?<span class="freq">~49×</span></div>
+<div class="a">
+<span class="pill do">YOU HANDLE</span> Build the morning list for Gabe/Antoine, every trailer <b>accessible</b>. Ayco → top them all off. Hatfield → +$50 top-off. Going back to the carrier/TMX → <b>mark "do not fill."</b> Omari fuel receipts/advances → through Bailey, not you.
+</div>
+
+<div class="q">What's my schedule — am I in Sunday / the holiday?<span class="freq">~37×</span></div>
+<div class="a">
+<div class="fill">📌 <b>Amedeo — set the standing schedule here so this stops being asked:</b> "Brendan works ____ nights/week, ____–____. Holidays: work unless told otherwise. Sundays: ____."</div>
+Default until set: <b>if there's a real route list, work it</b> — holidays included. Only ping me if the list looks empty.
+</div>
+
+<!-- ===================== COMMS MATRIX ===================== -->
+<h2 id="comms">📇 Who to Contact — channel by situation</h2>
+<div class="card">
+<table>
+<tr><th>Situation</th><th>Channel</th><th>Who / notes</th></tr>
+<tr><td>Customer <b>delay or problem</b></td><td><b>EMAIL</b> (record)</td><td>Glow, Dole, Chiquita, Top Banana — always email so they can't deny it</td></tr>
+<tr><td>Routine driver coordination</td><td>Text / group chat</td><td>Drivers & carriers</td></tr>
+<tr><td>Glow delivery question</td><td>Email or group</td><td>John (main) / Louis (ops). <b>Don't call John unprepared</b> — loop Amedeo</td></tr>
+<tr><td>Pickup # / port issue</td><td>Email</td><td>Route by terminal — see <a href="#tree-pickup">Pickup tree</a></td></tr>
+<tr><td>Chiquita maintenance</td><td>Phone/email</td><td>Nick (954) 599-0615 · Porfirio (302) 332-5003 — <b>only these two</b> for repairs</td></tr>
+<tr><td>Dole maintenance / damage</td><td>Email FIRST</td><td><code>Dole.WilmingtonM&amp;R@dole.com</code> (work-order # before any mechanic)</td></tr>
+<tr><td>Need a driver / coverage</td><td>Call/text, all at once</td><td>Ortega(Freddy)→Elvin→Rivera(Christina)→Edison</td></tr>
+<tr><td>Fuel advance / reimbursement</td><td>—</td><td><b>Bailey</b> handles, not you</td></tr>
+</table>
+</div>
+
+<!-- ===================== DECISION TREES ===================== -->
+<h2 id="trees">🌳 Decision Trees</h2>
+
+<h3 id="tree-cover">A driver fell off / a load has no coverage</h3>
+<div class="tree">
+  <div class="node start">⏰ Past <b>8pm</b> with no confirmed driver? → <b>Sound the alarm.</b></div>
+  <div class="branch">
+    <div class="node">1️⃣ <b>Blast everyone at once</b>: Ortega (Freddy) → Elvin → Rivera's (Christina) → Edison.</div>
+    <div class="node">2️⃣ Open after ~20 min? → <b>Portes</b> (last resort among known carriers).</div>
+    <div class="node">3️⃣ Call <b>drivers already on routes</b> — anyone nearby who can grab an extra?</div>
+    <div class="node">4️⃣ <b>Post on DAT</b> — price HIGH ($1,400–1,600 Everett). New-ish carrier → MC# + RMIS packet.</div>
+    <div class="node">5️⃣ Backup found but original might still show? → <b>Double-book</b> (standard hedge). First to the yard gets it; give the other a different load. <span class="tag">Don't tell either they're backup.</span></div>
+    <div class="out ask">🟡 Only cover is <b>above max / at a loss</b>, or needs a <b>new carrier</b>? → text me one line. Critical + can't reach me → <b>lock someone in anyway</b>, fix the number after.</div>
+  </div>
+</div>
+
+<h3 id="tree-mech">Trailer mechanical issue</h3>
+<div class="tree">
+  <div class="node start">🔧 First: <b>whose equipment?</b> (look for branding — Dole drys are harder to read)</div>
+  <div class="branch">
+    <div class="node"><b>CHIQUITA</b> → <span class="y">Chiquita pays the vendor directly — no out-of-pocket.</span>
+      <ul>
+        <li>Tires → <b>Chiquita Goodyear (479) 242-7611</b></li>
+        <li>Mechanical / genset / lights → <b>TTS (800) 342-5887</b></li>
+        <li>Reefer unit → <b>Nick</b> first, then JD if approved · Glad hands → John @ Glow</li>
+      </ul>
+    </div>
+    <div class="node"><b>DOLE</b> → <span class="n">STOP. Work-order number FIRST or no reimbursement.</span>
+      <ul>
+        <li>Email <code>Dole.WilmingtonM&amp;R@dole.com</code>, CC <code>luis.lapierre@dole.com</code> + <code>Jarod.Wilson@dole.com</code></li>
+        <li>Subject = <b>container # AND chassis #</b>; body = issue + photos</li>
+        <li>Get WO# → THEN call mechanic. Dole tires = <b>Service Tire (302) 328-8473</b> (Yokohama/Double Coin)</li>
+        <li>Dole slow? <b>Luis Lapierre (302) 463-3702</b>. We pay, invoice with WO#.</li>
+      </ul>
+    </div>
+    <div class="node"><b>LEASED / OTHER</b> → <b>JD–Yeisi (786) 383-6689</b>. Brakes/emergency → <b>E&amp;E (908) 906-0578</b>. Power cord → JD only.</div>
+    <div class="out">📸 <b>Always photograph damage</b> before dispatch + at the issue (protects vs driver-fault bill-backs). <b>Port delivered it broken</b> → document + bill back the port carrier.</div>
+    <div class="out ask">🟡 At temp but won't run → whether to <b>deliver not-running</b> is mine. Plug into an adjacent empty's genset meanwhile.</div>
+    <div class="out stop">⛔ <b>Kapi loads:</b> do NOT call Dole/Chiquita/JD — we handle those ourselves.</div>
+  </div>
+</div>
+
+<h3 id="tree-pickup">Pickup number not working</h3>
+<div class="tree">
+  <div class="node start">🔢 You need <b>pickup # + pickup location</b>. ID the customer from the number:</div>
+  <div class="branch">
+    <div class="node">Dole = 6 digits starting <b>6</b> · Chiquita = 6 digits starting <b>3</b> (or random 7-digit) · Kapi = <code>PVTA-015…</code></div>
+    <div class="node">Pattern unfamiliar? → <b>search the number in email</b>; the customer's almost always in a recent thread.</div>
+    <div class="node"><b>Chiquita — Penn Terminal (Eddystone/Chester PA):</b> To <code>yediaz@</code>, <code>frangarcia@chiquita.com</code>; CC <code>ccarbajo@chiquita.com</code> + dispatch + the BASE customer.</div>
+    <div class="node"><b>Chiquita — Port of Wilmington DE:</b> To <code>tmurray@</code>, <code>aburgess@</code>, <code>ccarbajo@chiquita.com</code>; CC dispatch + customer.</div>
+    <div class="node"><b>Not on OEX's Wilmington list?</b> → <b>Jason Streeter, jstreeter@ohioeastern.com</b>. Chiquita (Christine Wambsgans / Yaumi) must send the number to Jason.</div>
+    <div class="node"><b>Kapi:</b> To <code>sharonda@</code>, <code>Carlos@</code>, <code>bryan@kapigrowers.com</code>; CC <code>Kapikapigrowersfreight@t-insight.com</code> + dispatch.</div>
+  </div>
+</div>
+
+<!-- ===================== CARRIER BENCH ===================== -->
+<h2 id="carriers">🚚 Carrier Bench — who runs what (so you can assign without asking)</h2>
+<div class="card">
+<table>
+<tr><th>Carrier</th><th>Lanes</th><th>Notes / reliability</th></tr>
+<tr><td><b>Ortega</b> (Freddy)</td><td>Everett, Westbury, Calverton, Newburgh, Hatfield, Vineland, New Haven, Bronx, Chelsea</td><td>Workhorse. Freddy slow to reply; drivers need watching. <b>First call for coverage.</b></td></tr>
+<tr><td><b>Brisk Hawk</b></td><td>Everett, North Kingstown</td><td>Everett $1,550. After-hours via wife.</td></tr>
+<tr><td><b>Chapp</b></td><td>Port pulls, Vineland</td><td>Knows the yard layout well.</td></tr>
+<tr><td><b>DGR</b> (Dallas)</td><td>Vineland, Ayco split-leg</td><td>$350/leg.</td></tr>
+<tr><td><b>Johnson Express</b> (Mike)</td><td>Elizabeth NJ (NOT Newark), Ayco</td><td>$575/pair.</td></tr>
+<tr><td><b>Omari / Garfield</b></td><td>Everett (×2)</td><td>⚠️ Chronic lateness/napping. Double-book as hedge. Confirm Sheldon's status.</td></tr>
+<tr><td><b>Lewin</b> (Prime Warrior)</td><td>Everett, Newburgh</td><td>1 load/day, if honest & responsive. Quick-pay available.</td></tr>
+<tr><td><b>Elvin · Rivera (Christina) · Edison</b></td><td>Backup coverage</td><td>Coverage ladder, in order, after Ortega.</td></tr>
+<tr><td><b>Masters · Portes · WOW (Johan)</b></td><td>—</td><td>🚫 <b>AVOID</b> — only issues. Portes = last resort only.</td></tr>
+</table>
+<p class="tag"><b>Driver style:</b> call every driver every night ("religion"), check in every 1.5–2 hrs, verify everything ("assume everyone is beyond retarded"), and <b>push the carriers to make their own repair calls</b> — don't do their legwork.</p>
+</div>
+
+<!-- ===================== RATES ===================== -->
+<h2 id="rates">💵 Standard Lane Rates (carrier pay) — just read these to carriers</h2>
+<div class="card">
+<table>
+<tr><th>Lane</th><th>Standard</th><th>Recovery / max</th></tr>
+<tr><td>Everett (round trip)</td><td class="num">$1,300–1,400 <span class="tag">(Ortega 1,400 · Brisk Hawk 1,550)</span></td><td class="num">$1,500–1,800 max</td></tr>
+<tr><td>Calverton / Westbury (combined)</td><td class="num">$1,150</td><td class="num">—</td></tr>
+<tr><td>Westbury (backhaul only)</td><td class="num">$450–500</td><td class="num">standalone $950</td></tr>
+<tr><td>Vineland (delivery from yard)</td><td class="num">$350</td><td class="num">recovery $700, up to $1,000</td></tr>
+<tr><td>Newburgh</td><td class="num">$800 (Ortega) / $1,000</td><td class="num">—</td></tr>
+<tr><td>New Haven</td><td class="num">$1,100</td><td class="num">—</td></tr>
+<tr><td>Kapi RI (PU + DEL)</td><td class="num">$1,950</td><td class="num">—</td></tr>
+<tr><td>Central Falls RI</td><td class="num">$700</td><td class="num">—</td></tr>
+<tr><td>Cranford NJ pickup</td><td class="num">$650–700 posted</td><td class="num">up to $1,000–1,200 if desperate</td></tr>
+<tr><td>Ayco</td><td class="num">$350 (DGR) / $575 pair (Johnson)</td><td class="num">—</td></tr>
+<tr><td>Hatfield</td><td class="num">standard + $50 fuel top-off</td><td class="num">—</td></tr>
+</table>
+<p class="tag"><b>Detention:</b> separate line, NOT in the rate — $30/hr after 2 hr free. · <b>Yard trailer move:</b> $40–50. · <b>Post spot HIGH</b> to guarantee coverage. · <b>TONU & fuel advances need Amedeo / Bailey.</b></p>
+</div>
+
+<!-- ===================== MAINTENANCE ===================== -->
+<h2 id="maint">🔧 Maintenance — who to call (billing differs!)</h2>
+<div class="card">
+<table>
+<tr><th>Issue</th><th>Chiquita <span class="tag">(pays direct)</span></th><th>Dole <span class="tag">(WO# first!)</span></th><th>Leased/Other</th></tr>
+<tr><td>Tires</td><td>Goodyear (479) 242-7611</td><td>Service Tire (302) 328-8473</td><td>Goodyear / roadside</td></tr>
+<tr><td>Mech / genset / lights</td><td>TTS (800) 342-5887</td><td>JD / Dole email</td><td>JD–Yeisi (786) 383-6689</td></tr>
+<tr><td>Reefer unit</td><td>Nick first → JD</td><td>JD</td><td>JD–Yeisi</td></tr>
+<tr><td>Brakes / emergency</td><td>E&amp;E (908) 906-0578</td><td>Service Tire / TA</td><td>any roadside</td></tr>
+<tr><td>Gladhands</td><td>John @ Glow / Google</td><td>—</td><td>—</td></tr>
+<tr><td>Power cord</td><td>JD only</td><td>JD only</td><td>JD only</td></tr>
+</table>
+<p class="tag"><b>Chiquita repair contacts (only these two):</b> Nick Johnston (954) 599-0615 · njohnston@chiquita.com — Porfirio Mejia (302) 332-5003 · pmejia@chiquita.com.<br>
+<b>Dole rule:</b> NO mechanic until you have the work-order # from <code>Dole.WilmingtonM&amp;R@dole.com</code> (CC Luis + Jarod; subject = container# + chassis#). Yokohama/Double Coin tires only.</p>
+</div>
+
+<!-- ===================== REFERENCE ===================== -->
+<h2 id="ref">📋 Reference Facts (the little stuff you re-ask)</h2>
+<div class="twocol">
+  <div class="card">
+    <h3>Quick facts</h3>
+    <ul>
+      <li><b>Fuel card ZIP:</b> 19899</li>
+      <li><b>Common tire size:</b> 295/75R22.5</li>
+      <li><b>Detention:</b> $30/hr after 2 hr free</li>
+      <li><b>Yard alert:</b> 22+ containers at Caldwell → start working empties back to port</li>
+      <li>Customer tracking = <b>Rose Rocket</b>, never MacroPoint</li>
+    </ul>
+    <h3>Temperatures (check BOL first)</h3>
+    <ul>
+      <li>Bananas: <b>57–58°F</b> (dictates mixed loads)</li>
+      <li>Pineapple / limes: <b>45°F</b> (7.2°C)</li>
+      <li>Mixed w/ banana: Newburgh John = 52°F overnight</li>
+      <li><b>Glow/Everett: don't preset</b> — match Gate Pass, flag mismatch</li>
+      <li>1° gap (57 vs 58) = fine</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Yards</h3>
+    <ul>
+      <li><b>56 J Caldwell Ln</b>, New Castle DE 19720 — main hub</li>
+      <li>76 J Caldwell — newer location</li>
+      <li>521 Terminal Ave, New Castle DE 19720</li>
+      <li>Garasches — overflow / Everett staging</li>
+      <li>Millside (20 Millside Dr) — gate code <code>5252*</code></li>
+      <li>OEX / Leonard's — port drops / loading</li>
+    </ul>
+    <h3>Hard rules</h3>
+    <ul>
+      <li>Drivers get the <b>Excel BOL only</b> — never the delivery order</li>
+      <li>Never bring back an empty that isn't ours</li>
+      <li>All Philly→Everett / Glow / IFFC = <b>LIVE UNLOAD</b></li>
+      <li>Update <b>Masport</b> after every status change; cancel in Masport (not Rose Rocket)</li>
+      <li>Don't send a driver to the port <b>before</b> the pickup date</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+<h3>Load priority (when we can't cover everything — this one IS Amedeo's call, but here's the default order)</h3>
+<ol>
+<li>Chiquita plantains</li>
+<li>"Petite" loads (flagged very important)</li>
+<li>Everett banana labels</li>
+<li>IFFC live unloads</li>
+<li>Standard banana loads</li>
+<li>Dry loads (lowest — "barely matter")</li>
+</ol>
+</div>
+
+<div class="foot">
+Built for Brendan from BASE's full ops history with Amedeo (27,500+ messages) + the playbook. Ordered by what actually comes up at night. If something's wrong or out of date, tell Amedeo and we'll fix the guide. <b>Remember the two rules:</b> (1) try every way you know first, (2) if you're about to ask "is that fine?" — it's fine; do it and send a one-line decision, not a question.
+</div>
+
+<script>
+document.querySelectorAll('.q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    q.classList.toggle('open');
+    const a=q.nextElementSibling;
+    if(a&&a.classList.contains('a')) a.classList.toggle('show');
+  });
+});
+</script>
+</div>
+</body>
+</html>
